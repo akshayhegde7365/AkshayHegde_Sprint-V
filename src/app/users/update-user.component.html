@@ -1,0 +1,85 @@
+<div style="width: 900px">
+  <form #userdetails="ngForm" (ngSubmit)="onSubmit()">
+    <div class="card-header py-1">
+    <div class="form-row">
+      <div class="col">
+        <h3>Update User</h3>
+      </div>
+      <div class="col">
+        <button type="submit" [disabled]="userdetails.invalid" class="btn btn-primary"> Update </button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" type="button" (click)="gotoList()" > Cancel </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" type="button" (click)="DeleteProduct()" > Delete </button>
+      </div>
+    </div>
+    </div>
+    <br/>
+    <div class="form-row">
+      <div class="col">
+    <div class="form-group">
+      <label for="firstName">First Name of User : </label>
+      <input
+        class="form-control"
+        type="firstName"
+        [(ngModel)]="user.firstName"
+        name="firstName"
+        required
+        placeholder="Enter User's First Name"
+        #firstName="ngModel"
+        [class.is-invalid]="firstName.invalid && firstName.touched"
+      />
+      <div *ngIf="firstName.errors && firstName.invalid && firstName.touched">
+        <small class="text-danger" *ngIf="firstName.errors?.['required']"
+          >First Name is required field</small
+        >
+      </div>
+    </div> 
+  </div>
+  <div class="col">
+
+    <div class="form-group">
+        <label for="lastName">Last Name of User : </label>
+        <input
+          class="form-control"
+          type="lastName"
+          [(ngModel)]="user.lastName"
+          name="lastName"
+          required
+          placeholder="Enter User's Last Name"
+          #lastName="ngModel"
+          [class.is-invalid]="lastName.invalid && lastName.touched"
+        />
+        <div *ngIf="lastName.errors && lastName.invalid && lastName.touched">
+          <small class="text-danger" *ngIf="lastName.errors?.['required']"
+            >Last Name is required field</small
+          >
+        </div>
+      </div>
+
+    </div>
+    </div>
+      <div class="form-group">
+        <label for="emailId">Email Id of User : </label>
+        <input
+          class="form-control"
+          type="emailId"
+          [(ngModel)]="user.emailId"
+          name="emailId"
+          required
+          placeholder="Enter User's Email Id"
+          #emailId="ngModel"
+          [class.is-invalid]="emailId.invalid && emailId.touched"
+        />
+        <div *ngIf="emailId.errors && emailId.invalid && emailId.touched">
+          <small class="text-danger" *ngIf="emailId.errors?.['required']"
+            >Email Id is required field</small
+          >
+        </div>
+      </div>
+
+    <br />
+
+    
+  </form>
+</div>

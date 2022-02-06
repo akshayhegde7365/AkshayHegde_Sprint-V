@@ -1,0 +1,62 @@
+<div style="width: 900px">
+    <form #taskdetails="ngForm" (ngSubmit)="addTask()">
+        <div class="card-header py-1">
+            <div class="form-row">
+                <div class="col">
+                    <h3>Task Details</h3>
+                </div>
+                <div class="col">
+                    <button type="submit" [disabled]="taskdetails.invalid" class="btn btn-info">
+                        Add Task
+                    </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-info" (click)="RedirectToList()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <br />
+        </div>
+        
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <label for="project">Project : </label>
+                <select class="custom-select" id="project" #project="ngModel" [(ngModel)]="task.project" name="project"
+                    [ngClass]="{'invalid-textbox' : taskdetails.submitted && project.invalid }" required
+                    (change)="ChangeProjectId($event.target)">
+                    <option value="" selected>Select</option>
+                    <option *ngFor="let optionName of projects" [value]="optionName.id">{{optionName.name}}</option>
+                </select>
+                <div *ngIf="project.errors && project.invalid && project.touched">
+                    <small class="text-danger" *ngIf="project.errors?.['required']">project is required field</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="user">Assigned to User : </label>
+                <select class="custom-select" id="user" #user="ngModel" [(ngModel)]="task.assignedToUser" name="user"
+                    [ngClass]="{'invalid-textbox' : taskdetails.submitted && user.invalid }" required
+                    (change)="ChangeUserId($event.target)">
+                    <option value="" selected>Select</option>
+                    <option *ngFor="let optionName of users" [value]="optionName.id">{{optionName.firstName + " " +
+                        optionName.lastName}}</option>
+                </select>
+                <div *ngIf="user.errors && user.invalid && user.touched">
+                    <small class="text-danger" *ngIf="user.errors?.['required']">Assigned to User is required
+                        field</small>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="taskdetail">Details : </label>
+            <textarea class="form-control" type="taskdetail" [(ngModel)]="task.detail" name="taskdetail" required
+                placeholder="Enter Task Details" #taskdetail="ngModel"
+                [class.is-invalid]="taskdetail.invalid && taskdetail.touched"></textarea>
+            <div *ngIf="taskdetail.errors && taskdetail.invalid && taskdetail.touched">
+                <small class="text-danger" *ngIf="taskdetail.errors?.['required']">Location is required field</small>
+            </div>
+        </div>
+    </form>
+</div>

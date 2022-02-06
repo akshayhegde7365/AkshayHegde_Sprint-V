@@ -1,0 +1,48 @@
+<div>
+    <div class="d-flex flex-column" id="content-wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 font-weight-bold">
+                All Tasks
+                <button
+                  class="btn btn-primary align-content-end float-right"
+                  type="button"
+                  (click)="navigate()"
+                >
+                  Add Task
+                </button>
+              </p>
+            </div>
+            <div class="card-body">
+              <table class="table my-0" id="dataTable">
+                <thead class="colour">
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">AssignedToUser</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">CreatedOn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of tasks" (click)="updateProduct(product)">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.project }}</td>
+                    <td>{{ product.status }}</td>
+                    <td>{{ product.assignedToUser }}</td>
+                    <td>{{ product.detail }}</td>
+                    <td>{{ product.createdOn }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

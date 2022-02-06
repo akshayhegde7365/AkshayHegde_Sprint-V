@@ -1,0 +1,39 @@
+<div style="width: 900px">
+  <form #projectdetails="ngForm" (ngSubmit)="addProject()">
+    <div class="card-header py-1">
+      <div class="form-row">
+        <div class="col">
+          <h3>Project Details</h3>
+        </div>
+        <div class="col">
+          <button type="submit" [disabled]="projectdetails.invalid" class="btn btn-info">
+            Add Project
+          </button> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-info" (click)="RedirectToList()" >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <br/>
+      </div>
+    <div class="form-group">
+      <label for="Name">Name of Project : </label>
+      <input class="form-control" type="firstName" [(ngModel)]="project.name" name="Name" required
+        placeholder="Enter Project Name" #Name="ngModel"
+        [class.is-invalid]="Name.invalid && Name.touched" />
+      <div *ngIf="Name.errors && Name.invalid && Name.touched">
+        <small class="text-danger" *ngIf="Name.errors?.['required']">Name is required field</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="detail">Details : </label>
+      <textarea class="form-control" type="detail" [(ngModel)]="project.detail" name="detail" required
+        placeholder="Enter Project Details" #detail="ngModel"
+        [class.is-invalid]="detail.invalid && detail.touched"></textarea>
+      <div *ngIf="detail.errors && detail.invalid && detail.touched">
+        <small class="text-danger" *ngIf="detail.errors?.['required']">Detail is required field</small>
+      </div>
+    </div>
+  </form>
+</div>

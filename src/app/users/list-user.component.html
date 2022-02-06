@@ -1,0 +1,43 @@
+<div>
+    <div class="d-flex flex-column" id="content-wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 font-weight-bold">
+                All Users
+                <button
+                  class="btn btn-primary align-content-end float-right"
+                  type="button"
+                  (click)="navigate()"
+                >
+                  Add User
+                </button>
+              </p>
+            </div>
+            <div class="card-body">
+                <table class="table my-0" id="dataTable">
+                  <thead class="colour">
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Email Id</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of users" (click)="updateProduct(product)">
+                      <td>{{ product.id }}</td>
+                      <td>{{ product.firstName }}</td>
+                      <td>{{ product.lastName }}</td>
+                      <td>{{ product.emailId }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
